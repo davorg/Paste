@@ -46,7 +46,7 @@ get '/pastes/:id' => sub {
     'title' => $title,
     'paste' => $paste,
     'key'   => $id,
-    'link'  => '',
+    'link'  => request->uri_for(request->request_uri),
   };
 };
 
