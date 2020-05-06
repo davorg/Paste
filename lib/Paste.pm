@@ -17,8 +17,8 @@ get '/' => sub {
 };
 
 post '/paste' => sub {
-  my $title = param('title');
-  my $paste = param('paste');
+  my $title = body_parameters->get('title');
+  my $paste = body_parameters->get('paste');
   vars->{dbh}->do(
     'insert into pastes (title, paste) values (?, ?)', undef, $title, $paste
   );
@@ -35,16 +35,16 @@ post '/paste' => sub {
 };
 
 get '/pastes/:id' => sub {
-  my $id = params->{id};
-  my $title = vars->{dbh}->selectall_arrayref(
-    'select title from pastes where pastekey = ?', undef, $id
+  my $id = route_parameters->get('id');
+  my $data = vars->{dbh}->selectall_arrayref(
+    'select title, paste from pastes where pastekey = ?', undef, $id
   );
-  my $paste = vars->{dbh}->selectall_arrayref(
-    'select paste from pastes where pastekey = ?', undef, $id
-  );
+
+  my ($title, $paste) = @{ $data->[0] };
+
   template 'paste.tt', {
-    'title' => $title->[0][0],
-    'paste' => $paste->[0][0],
+    'title' => $title,
+    'paste' => $paste,
     'key'   => $id,
     'link'  => '',
   };
