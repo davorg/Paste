@@ -1,29 +1,3 @@
-<html>
-<head>
-  <title>perlpaste</title>
-  <style>
-    body {
-    font-family:sans-serif; }
-    p {
-    padding:10px; }
-    #header {
-    width:100%;
-    background-color:#000;
-    color:#fff; }
-    #wrapper {
-    width:100%; }
-    #input {
-    float:right;
-    width:80%; }
-    #sidebar {
-    float:left;
-    width:20%; }
-  </style>
-</head>
-<body>
-  <div id="header">
-    <h1>perlpaste - a pastebin in perl</h1>
-  </div>
   <div id="wrapper">
     <div id="input">
       <form action="paste" method="post">
@@ -43,5 +17,3 @@
       <p>you can paste things into the textbox, and you will be provided a link that you can distribute freely.</p>
     </div>
   </div>
-</body>
-</html>
