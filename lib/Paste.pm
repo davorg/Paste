@@ -1,12 +1,16 @@
 package Paste;
 use Dancer2;
+use Paste::Schema;
 
 our $VERSION = '0.1';
 
 use DBI;
 
 hook before => sub {
-  var dbh => DBI->connect("dbi:SQLite:paste.db") || die "couldn't open";
+  my $schema = Paste::Schema->connect("dbi:SQLite:paste.db")
+    or die "couldn't open";
+
+  var rs => $schema->resultset('Paste');
 };
 
 get '/' => sub {
@@ -19,33 +23,31 @@ get '/' => sub {
 post '/paste' => sub {
   my $title = body_parameters->get('title');
   my $paste = body_parameters->get('paste');
-  vars->{dbh}->do(
-    'insert into pastes (title, paste) values (?, ?)', undef, $title, $paste
-  );
-  my $key = vars->{dbh}->selectall_arrayref(
-    'select pastekey from pastes where paste = ?', undef, $paste
-  );
-  my $link = request->scheme . '://' . request->host . "/pastes/$key->[0][0]";
+
+  my $paste_db = vars->{rs}->create({
+    title => $title,
+    paste => $paste,
+  });
+
+  my $key = $paste_db->pastekey;
+
+  my $link = request->scheme . '://' . request->host . "/pastes/$key";
   template 'paste.tt', {
     'title' => $title,
     'paste' => $paste,
-    'key'   => $key->[0][0],
+    'key'   => $key,
     'link'  => $link,
   };
 };
 
 get '/pastes/:id' => sub {
   my $id = route_parameters->get('id');
-  my $data = vars->{dbh}->selectall_arrayref(
-    'select title, paste from pastes where pastekey = ?', undef, $id
-  );
-
-  my ($title, $paste) = @{ $data->[0] };
+  my $data = vars->{rs}->find({ pastekey => $id });;
 
   template 'paste.tt', {
-    'title' => $title,
-    'paste' => $paste,
-    'key'   => $id,
+    'title' => $data->title,
+    'paste' => $data->paste,
+    'key'   => $data->pastekey,
     'link'  => request->uri_for(request->request_uri),
   };
 };
