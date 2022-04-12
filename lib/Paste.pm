@@ -44,6 +44,11 @@ get '/pastes/:id' => sub {
   my $id = route_parameters->get('id');
   my $data = vars->{rs}->find({ pastekey => $id });;
 
+  unless ($data) {
+    status 404;
+    return "Paste $id not found.";
+  }
+
   template 'paste.tt', {
     'title' => $data->title,
     'paste' => $data->paste,
