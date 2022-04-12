@@ -12,11 +12,20 @@ p {
 #wrapper {
   width:100%;
 }
-#input {
+#paste {
   float:right;
   width:80%;
 }
 #sidebar {
   float:left;
   width:20%;
+}
+
+#header a {
+  color:#fff;
+  text-decoration:none;
+}
+
+#header a:hover {
+  text-decoration:underline;
 }

@@ -1,5 +1,4 @@
-  <div id="wrapper">
-    <div id="input">
+    <div id="paste">
       <form action="paste" method="post">
 	<table cellpadding=5>
 	  <tr>
@@ -11,9 +10,5 @@
 	    <td><textarea name="paste" cols="80" rows="24"></textarea></td>
 	  </tr>
 	</table>
+      </form>
     </div>
-    <div id="sidebar">
-      <p><b>perlpaste</b> is a no-nonsense pastebin, devoid of many features that you might expect to find in other pastebins. you might call this site lazy, but the author prefers the term "minimalistic".</p>
-      <p>you can paste things into the textbox, and you will be provided a link that you can distribute freely.</p>
-    </div>
-  </div>
