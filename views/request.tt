@@ -1,14 +1,9 @@
     <div id="paste">
-      <form action="paste" method="post">
-	<table cellpadding=5>
-	  <tr>
-	    <td>title</td>
-	    <td><input type="text" name="title" />&nbsp;<input type="submit" value="paste" /></td>
-	  </tr>
-	  <tr>
-	    <td>text</td>
-	    <td><textarea name="paste" cols="80" rows="24"></textarea></td>
-	  </tr>
-	</table>
+      <form action="paste" method="post" class="mb-3">
+        <div class="input-group">
+	  <input type="text" class="form-control" placeholder="title" name="title" id="title"/>
+          <input class="btn btn-dark" type="submit" value="paste" />
+        </div>
+	<textarea name="paste" placeholder="paste" id="paste" class="form-control" rows="20"></textarea>
       </form>
     </div>
