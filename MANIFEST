@@ -17,7 +17,6 @@ public/css/error.css
 public/css/style.css
 public/images/perldancer-bg.jpg
 public/images/perldancer.jpg
-public/javascripts/jquery.js
 t/001_base.t
 t/002_index_route.t
 views/index.tt
