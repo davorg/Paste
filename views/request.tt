@@ -1,11 +1,13 @@
-    <div id="paste">
-      <form action="paste" method="post">
-        <div class="mb-3">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="title" name="title" id="title"/>
-            <input class="btn btn-dark" type="submit" value="paste" />
-          </div>
-          <textarea name="paste" placeholder="paste" id="paste" class="form-control" rows="20"></textarea>
-        </div>
-      </form>
+<section id="paste" class="container mt-4">
+  <form action="paste" method="post">
+    <div class="mb-3">
+      <div class="input-group">
+        <label for="title" class="visually-hidden">Title</label>
+        <input type="text" class="form-control" placeholder="Title" name="title" id="title" required />
+        <input class="btn btn-dark" type="submit" value="Paste" />
+      </div>
+      <label for="paste" class="visually-hidden">Paste</label>
+      <textarea name="paste" placeholder="Paste your content here" id="paste" class="form-control mt-3" rows="20" required></textarea>
     </div>
+  </form>
+</section>

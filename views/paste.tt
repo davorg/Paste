@@ -1,5 +1,9 @@
-<div id="paste">
-  <h3>paste id: #<% key %> "<% title | html %>"</h3>
-  <div id="box"><pre><% paste | html %></pre></div>
-  <p><a href="<% link %>"><% link %></a></p>
-</div>
+<article id="paste" class="container mt-4">
+  <h3>Paste ID: #<span class="text-primary"><% key %></span> "<span class="text-secondary"><% title | html %></span>"</h3>
+  <div id="box" class="bg-light p-3 border rounded">
+    <pre><code><% paste | html %></code></pre>
+  </div>
+  <p class="mt-3">
+    <a href="<% link %>" class="btn btn-primary" role="button"><% link %></a>
+  </p>
+</article>
