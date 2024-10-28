@@ -18,7 +18,7 @@
         <a class="navbar-brand" href="/">PerlPaste - a pastebin in Perl</a>
       </div>
     </nav>
-    <main class="container-fluid">
+    <main class="container-fluid mt-4">
       <div class="row">
         <aside class="col-3">
           <p><b>PerlPaste</b> is a no-nonsense pastebin, devoid of many
