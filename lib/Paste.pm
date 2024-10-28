@@ -31,7 +31,7 @@ post '/paste' => sub {
 
   my $key = $paste_db->pastekey;
 
-  my $link = request->scheme . '://' . request->host . "/pastes/$key";
+  my $link = request->scheme . '://' . request->host . "/$key";
   template 'paste.tt', {
     'title' => $title,
     'paste' => $paste,
