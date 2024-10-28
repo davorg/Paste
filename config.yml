@@ -39,7 +39,7 @@ engines:
 # Dancer apps on the same host then you will need to make sure 'cookie_name'
 # is different for each app.
 #
-engines:
+# engines:
   session:
     Simple:
       cookie_name: paste.session
