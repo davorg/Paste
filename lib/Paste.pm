@@ -40,7 +40,7 @@ post '/paste' => sub {
   };
 };
 
-get '/pastes/:id' => sub {
+get '/:id[Int]' => sub {
   my $id = route_parameters->get('id');
   my $data = vars->{rs}->find({ pastekey => $id });;
 
