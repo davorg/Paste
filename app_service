@@ -12,12 +12,6 @@ use File::Basename;
 my $abs_path = abs_path($0);
 my $abs_dir  = dirname($0);
 
-my @vars = qw[HOST NAME USER PASS];
-
-if (grep { ! $ENV{"PASTE_DB_$_"} } @vars) {
-  die "Please define the DB connection variables: PASTE_DB*\n";
-}
-
 my @program_args;
 
 if ($ENV{PASTE_WORKER_COUNT}) {
