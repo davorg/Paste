@@ -21,9 +21,9 @@ get '/' => sub {
     session->delete('flash');
   }
   template 'request.tt', {
-    'header' => 'perlpaste - a pastebin in perl',
-    'text'   => 'the text',
-    'flash'  => $flash,
+    header => 'perlpaste - a pastebin in perl',
+    text   => 'the text',
+    flash  => $flash,
   };
 };
 
@@ -53,10 +53,10 @@ post '/paste' => sub {
   my $link = request->scheme . '://' . request->host . "/$key";
 
   template 'paste.tt', {
-    'title' => $title,
-    'paste' => $paste,
-    'key'   => $key,
-    'link'  => $link,
+    title => $title,
+    paste => $paste,
+    key   => $key,
+    link  => $link,
   };
 };
 
@@ -72,10 +72,10 @@ get '/:id[Int]' => sub {
   }
 
   template 'paste.tt', {
-    'title' => $data->title,
-    'paste' => $data->paste,
-    'key'   => $data->pastekey,
-    'link'  => request->uri_for(request->request_uri),
+    title => $data->title,
+    paste => $data->paste,
+    key   => $data->pastekey,
+    link  => request->uri_for(request->request_uri),
   };
 };
 
